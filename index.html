@@ -30,12 +30,12 @@
 </head>
 <body>
     <div id="app" class="container mt-4">
-        <h1 class="text-center">買い物計算</h1>
+        <h1>買い物計算 合計:{{ total }}円</h1>
         <div class="d-flex justify-content-center my-3">
             <button @mousedown="startRecognition" @touchstart="startRecognition" @mouseup="stopRecognition" @touchend="stopRecognition" class="btn btn-primary">
-                <i class="bi bi-mic-fill"></i>
+                <i style="font-size: 2rem;" class="bi bi-mic-fill"></i>
             </button>
-            <button @click="clearAll" class="btn btn-danger ms-2">消去</button>
+            <button @click="clearAll" class="btn btn-danger ms-2">全消去</button>
         </div>
         <ul class="list-group">
             <li v-for="(item, index) in items" :key="index" class="list-group-item align-items-center">
@@ -60,7 +60,6 @@
                 </div>
             </li>
         </ul>
-        <div class="mt-3 p-3 bg-light text-center" style="cursor: pointer;" title="合計金額">合計: {{ total }}円</div>
     </div>
     
     <div id="overlay" class="overlay">
