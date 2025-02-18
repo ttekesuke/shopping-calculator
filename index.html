@@ -35,7 +35,7 @@
     <div id="app" class="container mt-4">
         <div class="row fixed-top bg-white shadow p-3">
             <div class="col d-flex align-items-center justify-content-center">
-                <h2 class="m-0">合計:{{ total }}円
+                <h2 class="m-0">合計:{{ formatPrice(total) }}円
                     <i class="bi bi-info-circle ms-2" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#infoModal"></i>
                 </h2>
             </div>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="row">
                       <div class="col">
-                        {{ item.amount }}円 × {{ item.quantity }} = {{ item.amount * item.quantity }}円
+                        {{ formatPrice(item.amount) }}円 × {{ formatPrice(item.quantity) }} = {{ formatPrice(item.amount * item.quantity) }}円
                       </div>
                     </div>
                   </div>
@@ -124,7 +124,10 @@
             computed: {
                 total() {
                     return this.items.reduce((sum, item) => sum + (item.amount * item.quantity), 0);
-                }
+                },
+                formatPrice(value) {
+                    return Number(value).toLocaleString();
+                }                
             },
             methods: {
                 closeModal() {
